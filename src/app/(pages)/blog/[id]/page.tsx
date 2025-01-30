@@ -1,3 +1,5 @@
+import { NextPage } from "next";
+
 interface TBlog {
   id: string;
   title: string;
@@ -35,7 +37,7 @@ interface BlogArticlePageProps {
   };
 }
 
-const BlogArticlePage = async ({ params }: BlogArticlePageProps) => {
+const BlogArticlePage: NextPage<BlogArticlePageProps> = async ({ params }) => {
   const blogArticle = await getBlogArticle(params.id);
 
   return (
