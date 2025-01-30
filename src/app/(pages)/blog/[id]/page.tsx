@@ -1,3 +1,5 @@
+import { headers } from "next/headers";
+
 interface TBlog {
   id: string;
   title: string;
@@ -7,7 +9,8 @@ interface TBlog {
 export const dynamicParams = false;
 
 export async function generateStaticParams(): Promise<{ id: string }[]> {
-  const res = await fetch("../../../api/blog/");
+  const host = (await headers()).get("host");
+  const res = await fetch(`http://${host}/api/blog/`);
   const blogData = await res.json();
   console.log(blogData);
   return blogData.map((blog: TBlog) => ({
@@ -16,7 +19,8 @@ export async function generateStaticParams(): Promise<{ id: string }[]> {
 }
 
 const getBlogArticle = async (id: string) => {
-  const res = await fetch(`../../../api/blog/${id}`);
+  const host = (await headers()).get("host");
+  const res = await fetch(`http://${host}/api/blog/${id}`);
   const blogArticle = await res.json();
 
   return blogArticle;

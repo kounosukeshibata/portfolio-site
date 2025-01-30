@@ -1,5 +1,8 @@
 import Contact from "@/app/components/Contact";
 import { Metadata } from "next";
+import { headers } from "next/headers";
+
+const host = (await headers()).get("host");
 
 export const metadata: Metadata = {
   title: "お問い合わせ | YK Room",
@@ -7,13 +10,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "お問い合わせ | YK Room",
     description: "お問い合わせページです。",
-    url: "./",
+    url: `https://${host}/contact/`,
     siteName: "SSGブログ",
     images: [
       {
         width: "1200",
         height: "675",
-        url: "../../../public/ogp-contact.png",
+        url: `https://${host}/ogp-contact.png`,
       },
     ],
     locale: "jp",

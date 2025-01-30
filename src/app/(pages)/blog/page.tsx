@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { headers } from "next/headers";
 
 interface TBlog {
   id: string;
@@ -7,7 +8,8 @@ interface TBlog {
 }
 
 const getBlogData = async () => {
-  const res = await fetch("../../api/blog");
+  const host = (await headers()).get("host");
+  const res = await fetch(`http://${host}/api/blog`);
   const blogData = await res.json();
   return blogData;
 };
