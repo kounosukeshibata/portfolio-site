@@ -7,13 +7,13 @@ export const metadata: Metadata = {
   openGraph: {
     title: "お問い合わせ | YK Room",
     description: "お問い合わせページです。",
-    url: "http://localhost:3000/",
+    url: "./",
     siteName: "SSGブログ",
     images: [
       {
         width: "1200",
         height: "675",
-        url: "http://localhost:3000/ogp-contact.png",
+        url: "../../../public/ogp-contact.png",
       },
     ],
     locale: "jp",

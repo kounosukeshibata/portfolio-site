@@ -6,8 +6,8 @@ interface TBlog {
 
 export const dynamicParams = false;
 
-export async function generateStaticParams() {
-  const res = await fetch("http://localhost:3000/api/blog/");
+export async function generateStaticParams(): Promise<{ id: string }[]> {
+  const res = await fetch("../../../api/blog/");
   const blogData = await res.json();
   console.log(blogData);
   return blogData.map((blog: TBlog) => ({
@@ -16,7 +16,7 @@ export async function generateStaticParams() {
 }
 
 const getBlogArticle = async (id: string) => {
-  const res = await fetch(`http://localhost:3000/api/blog/${id}`);
+  const res = await fetch(`../../../api/blog/${id}`);
   const blogArticle = await res.json();
 
   return blogArticle;
