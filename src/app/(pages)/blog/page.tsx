@@ -7,7 +7,7 @@ interface TBlog {
 }
 
 const getBlogData = async () => {
-  const res = await fetch("http://localhost:3000/api/blog");
+  const res = await fetch("../../api/blog");
   const blogData = await res.json();
   return blogData;
 };
