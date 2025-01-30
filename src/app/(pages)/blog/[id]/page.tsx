@@ -21,12 +21,21 @@ const getBlogArticle = async (id: string) => {
   const res = await fetch(
     `https://portfolio-site-three-sooty.vercel.app/api/blog/${id}`
   );
-  const blogArticle = await res.json();
+  if (!res.ok) {
+    throw new Error("Failed to fetch blog article");
+  }
 
+  const blogArticle = await res.json();
   return blogArticle;
 };
 
-const BlogArticlePage = async ({ params }: { params: { id: string } }) => {
+interface BlogArticlePageProps {
+  params: {
+    id: string;
+  };
+}
+
+const BlogArticlePage = async ({ params }: BlogArticlePageProps) => {
   const blogArticle = await getBlogArticle(params.id);
 
   return (
