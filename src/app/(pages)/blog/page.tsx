@@ -1,5 +1,4 @@
 import Link from "next/link";
-import { headers } from "next/headers";
 
 interface TBlog {
   id: string;
@@ -8,8 +7,9 @@ interface TBlog {
 }
 
 const getBlogData = async () => {
-  const host = (await headers()).get("host");
-  const res = await fetch(`http://${host}/api/blog`);
+  const res = await fetch(
+    `https://portfolio-site-three-sooty.vercel.app/api/blog`
+  );
   const blogData = await res.json();
   return blogData;
 };
