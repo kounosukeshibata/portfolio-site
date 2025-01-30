@@ -1,5 +1,3 @@
-import { NextPage } from "next";
-
 interface TBlog {
   id: string;
   title: string;
@@ -31,14 +29,9 @@ const getBlogArticle = async (id: string) => {
   return blogArticle;
 };
 
-interface BlogArticlePageProps {
-  params: {
-    id: string;
-  };
-}
-
-const BlogArticlePage: NextPage<BlogArticlePageProps> = async ({ params }) => {
-  const blogArticle = await getBlogArticle(params.id);
+const BlogArticlePage = async ({ params }: { params: Promise<{ id: string }> }) => {
+  const { id } = await params;
+  const blogArticle = await getBlogArticle(id);
 
   return (
     <div className="container mx-auto py-5">
