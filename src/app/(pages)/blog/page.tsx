@@ -7,9 +7,13 @@ interface TBlog {
 }
 
 const getBlogData = async () => {
+  // const res = await fetch(
+  //   `https://portfolio-site-three-sooty.vercel.app/api/blog`
+  // );
   const res = await fetch(
-    `https://portfolio-site-three-sooty.vercel.app/api/blog`
+    `http://localhost:3000/api/blog/`
   );
+  console.log(res);
   const blogData = await res.json();
   return blogData;
 };

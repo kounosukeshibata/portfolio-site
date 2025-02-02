@@ -7,8 +7,11 @@ interface TBlog {
 export const dynamicParams = false;
 
 export async function generateStaticParams(): Promise<{ id: string }[]> {
+  // const res = await fetch(
+  //   `https://portfolio-site-three-sooty.vercel.app/api/blog/`
+  // );
   const res = await fetch(
-    `https://portfolio-site-three-sooty.vercel.app/api/blog/`
+    `http://localhost:3000/api/blog/`
   );
   const blogData = await res.json();
   console.log(blogData);
@@ -18,8 +21,11 @@ export async function generateStaticParams(): Promise<{ id: string }[]> {
 }
 
 const getBlogArticle = async (id: string) => {
+  // const res = await fetch(
+  //   `https://portfolio-site-three-sooty.vercel.app/api/blog/${id}`
+  // );
   const res = await fetch(
-    `https://portfolio-site-three-sooty.vercel.app/api/blog/${id}`
+    `http://localhost:3000/api/blog/${id}`
   );
   if (!res.ok) {
     throw new Error("Failed to fetch blog article");
